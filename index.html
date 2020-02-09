@@ -37,7 +37,8 @@
             content="width=device-width, initial-scale=1"
         />
 
-        <title>HTML tag element : include JSON data in HTML table using JavaScript</title>
+        <title>HTML tag element : include JSON data in HTML table using
+            JavaScript</title>
 
         <!-- favicon-->
         <link
@@ -56,9 +57,29 @@
                 font-size: 12px;
                 margin: 0 auto;
                 padding: 0 0.5rem 0.5rem 0.5rem;
-                background-color: #f1f1f1;
+                background-color: #1e1e1e;
+                /*rgba(0,0,0,0.33)*/
                 display: block;
                 width: 100%;
+            }
+
+            blockquote {
+                background: #282828;
+                border-left: 0.625em solid #14517a;
+                margin: 1.5em 0.625em;
+                padding: 0.5em 0.625em;
+            }
+
+            blockquote:before {
+                color: #ccc;
+                font-size: 4rem;
+                line-height: 0.1rem;
+                margin-right: 0.25rem;
+                vertical-align: -0.4rem;
+            }
+
+            blockquote p {
+                display: block;
             }
 
             table {
@@ -74,10 +95,6 @@
                 padding: 0.5rem;
             }
 
-            tr:nth-child(even) {
-                background-color: #dddddd;
-            }
-
             h1,
             h2,
             h3,
@@ -87,9 +104,41 @@
             p,
             span,
             li,
-            th,
-            td  {
-                color: #444;
+            textarea {
+                color: #d4d4d4;
+            }
+
+            textarea,
+            label {
+                width: 100%;
+                overflow-x: scroll;
+                background-color: #161616;
+                color: #d4d4d4
+            }
+
+            table tr:nth-child(even) {
+                background-color: #d4d4d4;
+                color: #1e1e1e;
+            }
+
+            table tr:nth-child(odd) {
+                background-color: #1e1e1e;
+                color: #d4d4d4;
+            }
+
+            table th {
+                background-color: #161616;
+                color: #d4d4d4;
+            }
+
+            code {
+                color: #c4aa74;
+            }
+
+            a,
+            a:active,
+            a:visited {
+                color: #3480d7;
             }
 
             /* 
@@ -125,7 +174,7 @@
             }
 
             /* 
-                Tablet 
+            Tablet 
             */
             @media (min-width: 960px) {
                 html {
@@ -170,7 +219,7 @@
                 </template>
             </tbody>
         </table>
-        
+
         <script>
             let products = [
                 {
