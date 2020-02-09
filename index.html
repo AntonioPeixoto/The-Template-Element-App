@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html
+    lang="en"
+    class="no-js"
+>
+    <!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8" />
+
+        <meta
+            name="description"
+            content="Template HTML tag <template>, enable us to structure the content of a table for include JSON data in it with JavaScript. HTML5, CSS3, JSON and Javascript are used to insert dynamic content into this web page and make it fully responsive, mobile-first."
+        />
+
+        <meta
+            name="keywords"
+            content="HTML5,CSS,JavaScript,JSON,tag template,html template,w3 template tag,tag template html 5,html template tag,javascript template,html js templates,html basic structure,variables in html,html partial include,link html import,web components,responsive design"
+        />
+
+        <meta
+            name="author"
+            content="Antonio Peixoto, antonio.peixoto.fo@gmail.com"
+        />
+
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+        />
+
+        <title>HTML tag element : include JSON data in HTML table using JavaScript</title>
+
+        <!-- favicon-->
+        <link
+            href="./pxtgray.ico"
+            rel="icon"
+            type="image/x-icon"
+        />
+        <!-- CSS 
+        <link
+            rel="stylesheet"
+            href="./style.css"
+        />
+        -->
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                font-family: "Open Sans", sans-serif;
+                font-size: 12px;
+                margin: 0 auto;
+                padding: 0 0.5rem 0.5rem 0.5rem;
+                background-color: #f1f1f1;
+                display: block;
+                width: 100%;
+            }
+
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 0.0625rem solid #dddddd;
+                text-align: left;
+                padding: 0.5rem;
+            }
+
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            span,
+            li,
+            th,
+            td  {
+                color: #444;
+            }
+
+            /* 
+                Media queries 
+            */
+            /* 
+                most of smartphones (Portrait)
+            */
+            @media (min-width: 320px) {
+                html {
+                    font-size: 13px;
+                }
+            }
+
+            /* 
+                most of smartphones (landscape)
+            */
+            @media (min-width: 517px) {
+                html {
+                    font-size: 16px;
+                    width: 95%;
+                }
+            }
+
+            /* 
+                Tablet 
+            */
+            @media (min-width: 837px) {
+                html {
+                    font-size: 16px;
+                    width: 80%;
+                }
+            }
+
+            /* 
+                Tablet 
+            */
+            @media (min-width: 960px) {
+                html {
+                    font-size: 16px;
+                    width: 80%;
+                }
+            }
+
+            /* 
+                Laptop & desktop
+            */
+            @media (min-width: 1200px) {
+                html {
+                    font-size: 16px;
+                    width: 60%;
+                }
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <!--[if lt IE 7]>
+               <p class="browsehappy">
+               You are using an <strong>outdated</strong> browser. Please
+                <a href="#">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+        <table id="productCatalog">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Product Description</th>
+                </tr>
+            </thead>
+            <tbody id="products">
+                <!-- existing data could optionally be included here -->
+                <template id="product">
+                    <tr>
+                        <td id="productName"></td>
+                        <td id="productDescription"></td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <script>
+            let products = [
+                {
+                    productName: "Lorem ipsum",
+                    productDescription: "Lorem ipsum ante donec, taciti quisque curae magna, sit amet. "
+                },
+                {
+                    productName: "Lacus aenean",
+                    productDescription:
+                        "Lacus aenean tempus donec morbi dui, pretium nisl ultrices pellentesque."
+                },
+                {
+                    productName: "Interdum suscipit",
+                    productDescription:
+                        "Interdum suscipit curae in eleifend ac, adipiscing elementum elit torquent."
+                }
+            ];
+            // Test to see if the browser supports the HTML template element by checking
+            // for the presence of the template element's content attribute.
+            if ("content" in document.createElement("template")) {
+                // Instantiate the table with the existing HTML tbody
+                let tbody = document.getElementById("products");
+
+                // Instantiate the table row with the template
+                let template = document.getElementById("product");
+
+                // Insert each product in the products table
+                for (let product of products) {
+
+                    // Clone the template
+                    let clone = template.content.cloneNode(true);
+
+                    // Populate template with the data received in JSON
+                    let productName = clone.getElementById("productName");
+                    let productDescription = clone.getElementById("productDescription");
+                    productName.textContent = product.productName;
+                    productDescription.textContent = product.productDescription;
+
+                    // Append the template populated with data at the end of the table body
+                    tbody.appendChild(clone);
+                }
+            } else {
+                window.document.write("Your browser do not supports templates. Update it!");
+                // Find another way to add the rows to the table because
+                // the HTML template element is not supported.
+            }          
+        </script>
+    </body>
+
+</html>
