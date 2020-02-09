@@ -1,43 +1,174 @@
-The `template` element
-======================
+<style>
+* {
+  box-sizing: border-box;
+}
 
-Sometimes we need to make a web page whose content is not known at
-design time, we only know its structure, but not the actual values.
+html {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  margin: 0 auto;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+  background-color: #1e1e1e; /*rgba(0,0,0,0.33)*/
+  display: block;
+  width: 100%;
+}
 
-The **HTML Content Template element** (`<template>`) was designed to let
-us address this need. With it, we can design a template that describes
-the content/data structure.
+blockquote {
+  background: #282828;
+  border-left: 0.625em solid #14517a;
+  margin: 1.5em 0.625em;
+  padding: 0.5em 0.625em;
+}
 
-The template built with `<template>` tag isn\'t rendered by the browser,
-it will be used by JavaScript code. The JavaScript code will receive the
-data - possibly from a server - and will populate the template with it.
+blockquote:before {
+  color: #ccc;
+  font-size: 4rem;
+  line-height: 0.1rem;
+  margin-right: 0.25rem;
+  vertical-align: -0.4rem;
+}
 
-> The `template` element is used to declare fragments of HTML that can
-> be cloned and inserted in the document by script.
+blockquote p {
+  display: block;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 0.0625rem solid #dddddd;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+li,
+textarea {
+  color: #d4d4d4;
+}
+
+textarea,label {
+  width: 100%;
+  overflow-x: scroll;
+  background-color: #161616;
+  color: #d4d4d4
+}
+
+table tr:nth-child(even) {
+  background-color: #d4d4d4;
+  color: #1e1e1e;
+}
+
+table tr:nth-child(odd) {
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+}
+
+table th {
+  background-color: #161616;
+  color: #d4d4d4;
+}
+
+code {
+  color: #c4aa74;
+}
+
+a,
+a:active,
+a:visited {
+  color: #3480d7;
+}
+
+/* 
+    Media queries 
+*/
+/* 
+    most of smartphones (Portrait)
+*/
+@media (min-width: 320px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* 
+    most of smartphones (landscape)
+*/
+@media (min-width: 517px) {
+  html {
+    font-size: 16px;
+    width: 95%;
+  }
+}
+
+/* 
+    Tablet 
+*/
+@media (min-width: 837px) {
+  html {
+    font-size: 16px;
+    width: 80%;
+  }
+}
+
+/* 
+    Tablet 
+*/
+@media (min-width: 960px) {
+  html {
+    font-size: 16px;
+    width: 80%;
+  }
+}
+
+/* 
+    Laptop & desktop
+*/
+@media (min-width: 1200px) {
+  html {
+    font-size: 16px;
+    width: 60%;
+  }
+}
+
+</style>
+
+# The `template` element
+
+Sometimes we need to make a web page whose content is not known at design time, we only know its structure, but not the actual values.
+
+The **HTML Content Template element** (`<template>`) was designed to let us address this need. With it, we can design a template that describes the content/data structure.
+
+The template built with `<template>` tag isn't rendered by the browser, it will be used by JavaScript code. The JavaScript code will receive the data - possibly from a server - and will populate the template with it.
+
+> The [template](https://www.w3.org/TR/html52/semantics-scripting.html#elementdef-template) element is used to declare fragments of HTML that can be cloned and inserted in the document by script.
 >
-> In a rendering, the
-> `                         template                     `element
-> [represents](https://www.w3.org/TR/html52/dom.html#represent) nothing.
+> In a rendering, the [template](https://www.w3.org/TR/html52/semantics-scripting.html#elementdef-template) element [represents](https://www.w3.org/TR/html52/dom.html#represent) nothing.
 >
-> The [template
-> contents](https://www.w3.org/TR/html52/semantics-scripting.html#template-contents)
-> of a `                         template` element [are not children of
-> the element
-> itself](https://www.w3.org/TR/html52/syntax.html#template-syntax).
+> The [template contents](https://www.w3.org/TR/html52/semantics-scripting.html#template-contents) of a [template](https://www.w3.org/TR/html52/semantics-scripting.html#elementdef-template) element [are not children of the element itself](https://www.w3.org/TR/html52/syntax.html#template-syntax).
 >
-> in [The template
-> element](https://www.w3.org/TR/html52/semantics-scripting.html#the-template-element)
-> by HTML 5.2 W3C Recommendation
+> <footer style="text-align: right;">
+>
+> <span>in</span> <cite>[The template element](https://www.w3.org/TR/html52/semantics-scripting.html#the-template-element)</cite> <span>by HTML 5.2 W3C Recommendation</span>
+>
+> </footer>
 
-Example
--------
+## Example
 
-In this example, we will structure a table without real data in it. The
-content structure will be described by **HTMLContent Template element**,
-`<template>` for short.
+In this example, we will structure a table without real data in it. The content structure will be described by **HTMLContent Template element**, `<template>` for short.
 
     HTML code
-
     <table id="productCatalog">
         <thead>
             <tr>
@@ -56,29 +187,21 @@ content structure will be described by **HTMLContent Template element**,
         </tbody>
     </table>
 
-We begin by defining a table that represents the data structure we want
-to represent. The actual data is modelled by the HTML tags between
-\<template\> and \</template\> and will not be rendered by the browser.
+We begin by defining a table that represents the data structure we want to represent. The actual data is modelled by the HTML tags between `<template>` and `</template>` and will not be rendered by the browser.
 
-The next step is to write the JavaScript code the will populate the
-template with actual data. In the example, we created a JSON object that
-simulates the data sent by the server.
+The next step is to write the JavaScript code that will populate the template with actual data. In the example, we created a JSON object that simulates the data sent by the server.
 
-The following steps describe the process used to populate the template
-with actual data:
+The following steps describe the process used to populate the template with actual data:
 
 1.  Verify if the browser supports templates if no execute fallback
-2.  Get a reference to the table body, in our case a list of products we
-    want to show
+2.  Get a reference to the table body, in our case a list of products we want to show
 3.  Get a reference to our template
 4.  Read the template (clone it)
-5.  Iterate over an array of objects and put its properties in the
-    template fields described by its id attribute
+5.  Iterate over an array of objects and put its properties in the template fields described by its id attribute
 
 Follow the code below:
 
     JavaScript code
-
     if ("content" in document.createElement("template")) {
       // Instantiate the table with the existing HTML tbody
       let tbody = document.getElementById("products");
@@ -105,6 +228,30 @@ Follow the code below:
       document.write("Your browser do not supports templates. Update it!");
       // Find another way to add the rows to the table because
       // the HTML template element is not supported.
-    }          
- 
-[See the results](https://antoniopeixoto.github.io/The-Template-Element-App/)
+    }
+
+See the results below or [the live example](https://antoniopeixoto.github.io/The-Template-Element-App/)
+
+<table id="productCatalog">
+<thead>
+    <tr>
+        <th>Product Name</th>
+        <th>Product Description</th>
+    </tr>
+</thead>
+<tbody id="products">
+    <!-- existing data could optionally be included here -->
+        <tr>
+            <td id="productName">Lorem ipsum</td>
+            <td id="productDescription">Lorem ipsum ante donec, taciti quisque curae magna, sit amet.</td>
+        </tr>
+        <tr>
+            <td id="productName">Lacus aenean</td>
+            <td id="productDescription">Lacus aenean tempus donec morbi dui, pretium nisl ultrices pellentesque.</td>
+        </tr>
+        <tr>
+            <td id="productName">Interdum suscipit</td>
+            <td id="productDescription">Interdum suscipit curae in eleifend ac, adipiscing elementum elit torquent.</td>
+        </tr>
+</tbody>
+</table>
